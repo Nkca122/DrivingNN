@@ -25,7 +25,8 @@ function generateCar(N){
 
     for(let i = 1; i < N; i++){
         if(bestBrain){
-            NeuralNetwork.mutate(cars[i].brain, 1)
+            console.log("YES")
+            NeuralNetwork.mutate(cars[i].brain, 0.5)
         }
     }
 
@@ -77,7 +78,7 @@ function move(){
 
     for(let i = 0; i < cars.length; i++){
         cars[i].update(carCtx, road.borders, traffic)
-        if(cars[i].y < bestCar.y && cars[i].speed >= 900){
+        if(cars[i].y < bestCar.y && !cars[i].damaged){
             bestCar = cars[i]
             remove()
             save(bestCar)
@@ -116,7 +117,7 @@ setInterval(()=>{
     cars = refresh(cars, traffic).cars
     traffic = refresh(cars, traffic).traffic
     bestCar = cars[0]
-}, 4000)
+}, 4500)
 
 move()
 
