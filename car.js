@@ -37,7 +37,6 @@ class Car{
         for(let i = 0; i < traffic.length; i++){
             if(polyIntersect(this.polygon, traffic[i].polygon)){
                 this.damaged = true
-                traffic[i].damaged = true
                 return 
             }
         }
@@ -150,7 +149,6 @@ class Car{
             )
             
             const outputs = NeuralNetwork.feedForward(offsets, this.brain)
-            console.log(outputs)
 
             if(this.controlType){
                 this.controls.forward = outputs[0]
